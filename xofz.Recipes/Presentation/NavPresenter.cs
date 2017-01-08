@@ -44,6 +44,7 @@
 
         private void ui_AddKeyTapped()
         {
+            this.web.Run<Navigator>(n => n.Present<AddUpdatePresenter>());
         }
 
         private void ui_RemoveKeyTapped()

@@ -2,6 +2,7 @@
 {
     using System.Threading;
     using System.Windows.Forms;
+    using xofz.Framework.Materialization;
     using xofz.Recipes.Root.Commands;
     using xofz.Recipes.UI.Forms;
     using xofz.Root;
@@ -46,6 +47,11 @@
                     mf, w))
                 .Execute(new SetupNavCommand(
                     mf.NavUi,
+                    mf,
+                    w))
+                .Execute(new SetupAddUpdateCommand(
+                    new UserControlAddUpdateUi(
+                        se => new LinkedListMaterializedEnumerable<string>(se)),
                     mf,
                     w));
         }
