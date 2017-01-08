@@ -56,6 +56,7 @@
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.navUi);
             this.Controls.Add(this.screenPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormMainUi";
             this.Text = "xofz.Recipes";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.this_FormClosing);

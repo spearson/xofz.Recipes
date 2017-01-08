@@ -30,6 +30,7 @@
             }
 
             this.ui.SearchTextChanged += this.ui_SearchTextChanged;
+            this.ui.ClearSearchKeyTapped += this.ui_ClearSearchKeyTapped;
             this.web.Run<RecipeLoader>(loader =>
             {
                 var recipes = loader.All();
@@ -38,6 +39,17 @@
             });
 
             this.web.Run<Navigator>(n => n.RegisterPresenter(this));
+        }
+
+        private void ui_ClearSearchKeyTapped()
+        {
+            UiHelpers.Write(this.ui, () =>
+            {
+                this.ui.NameSearchText = null;
+                this.ui.DescriptionSearchText = null;
+                this.ui.IngredientsSearchText = null;
+                this.ui.DirectionsSearchText = null;
+            });
         }
 
         private void ui_SearchTextChanged()

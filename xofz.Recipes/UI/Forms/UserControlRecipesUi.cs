@@ -41,14 +41,14 @@
         {
             get { return this.materializeStrings(this.ingredientsSearchTextBox.Lines); }
 
-            set { this.ingredientsSearchTextBox.Lines = value.ToArray(); }
+            set { this.ingredientsSearchTextBox.Lines = value?.ToArray(); }
         }
 
         MaterializedEnumerable<string> RecipesUi.DirectionsSearchText
         {
             get { return this.materializeStrings(this.directionsSearchTextBox.Lines); }
 
-            set { this.directionsSearchTextBox.Lines = value.ToArray(); }
+            set { this.directionsSearchTextBox.Lines = value?.ToArray(); }
         }
 
         MaterializedEnumerable<Recipe> RecipesUi.MatchingRecipes
