@@ -36,8 +36,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
     <Reference Include="xofz.Core">
       <HintPath>C:\Dropbox\Libraries\xofz.Core\xofz.Core.dll</HintPath>
     </Reference>
@@ -48,10 +50,12 @@
     <Compile Include="Framework\RecipeSaver.cs" />
     <Compile Include="Presentation\AddUpdatePresenter.cs" />
     <Compile Include="Presentation\NavPresenter.cs" />
+    <Compile Include="Presentation\RecipesPresenter.cs" />
     <Compile Include="Recipe.cs" />
     <Compile Include="Root\Commands\SetupAddUpdateCommand.cs" />
     <Compile Include="Root\Commands\SetupMethodWebCommand.cs" />
     <Compile Include="Root\Commands\SetupNavCommand.cs" />
+    <Compile Include="Root\Commands\SetupRecipesCommand.cs" />
     <Compile Include="Root\FormsBootstrapper.cs" />
     <Compile Include="UI\AddUpdateUi.cs" />
     <Compile Include="UI\Forms\FormMainUi.cs">
@@ -74,7 +78,14 @@
     <Compile Include="UI\Forms\UserControlNavUi.Designer.cs">
       <DependentUpon>UserControlNavUi.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Forms\UserControlRecipesUi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\UserControlRecipesUi.Designer.cs">
+      <DependentUpon>UserControlRecipesUi.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\NavUi.cs" />
+    <Compile Include="UI\RecipesUi.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -93,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\UserControlNavUi.resx">
       <DependentUpon>UserControlNavUi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\UserControlRecipesUi.resx">
+      <DependentUpon>UserControlRecipesUi.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

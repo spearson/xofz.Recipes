@@ -53,6 +53,12 @@
                     new UserControlAddUpdateUi(
                         se => new LinkedListMaterializedEnumerable<string>(se)),
                     mf,
+                    w))
+                .Execute(new SetupRecipesCommand(
+                    new UserControlRecipesUi(
+                        s => new LinkedListMaterializedEnumerable<string>(s),
+                        r => new LinkedListMaterializedEnumerable<Recipe>(r)),
+                    mf,
                     w));
         }
 

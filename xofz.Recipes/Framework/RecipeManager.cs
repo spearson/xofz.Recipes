@@ -41,17 +41,21 @@
         {
             foreach (var filePath in Directory.GetFiles(this.location))
             {
+                var name = Path.GetFileName(filePath);
                 var lines = File.ReadAllLines(filePath);
-                if (lines.Length < 2)
+                if (lines.Length < 1)
                 {
                     continue;
                 }
 
-                var name = lines[0];
-                var description = lines[1];
+                var description = lines[0];
                 if (lines.Length < 3)
                 {
-                    yield return new Recipe { Name = name, Description = description };
+                    yield return new Recipe
+                    {
+                        Name = name,
+                        Description = description
+                    };
                 }
 
                 var ingredients = new LinkedList<string>();
@@ -79,7 +83,7 @@
                 }
 
                 var directions = new LinkedList<string>();
-                for (var i = endOfIngredients; i < lines.Length; ++i)
+                for (var i = endOfIngredients + 1; i < lines.Length; ++i)
                 {
                     directions.AddLast(lines[i]);
                 }

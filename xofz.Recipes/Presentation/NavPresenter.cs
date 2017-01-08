@@ -40,6 +40,7 @@
 
         private void ui_RecipesKeyTapped()
         {
+            this.web.Run<Navigator>(n => n.Present<RecipesPresenter>());
         }
 
         private void ui_AddKeyTapped()
