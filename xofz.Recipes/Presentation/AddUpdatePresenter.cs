@@ -1,6 +1,7 @@
 ﻿namespace xofz.Recipes.Presentation
 {
     using System;
+    using System.Linq;
     using System.Threading;
     using xofz.Framework;
     using xofz.Presentation;
@@ -29,6 +30,7 @@
 
             this.ui.AddUpdateKeyTapped += this.ui_AddUpdateKeyTapped;
             this.ui.ResetKeyTapped += this.ui_ResetKeyTapped;
+            this.ui.LookupKeyTapped += this.ui_LookupKeyTapped;
 
             this.web.Run<Navigator>(n => n.RegisterPresenter(this));
         }
@@ -46,17 +48,37 @@
                 return;
             }
 
+            var updated = false;
             try
             {
-                w.Run<RecipeSaver>(saver => saver.Save(recipe));
+                updated = w.Run<RecipeSaver, bool>(saver => saver.Save(recipe));
             }
             catch (ArgumentException)
             {
                 w.Run<Messenger>(m =>
                     UiHelpers.Write(
                         m.Subscriber,
-                        () => m.GiveError("Please enter a valid file name for the recipe name.")));
+                        () => m.GiveError("Please enter a valid file name" +
+                                          " for the recipe name.")));
+                return;
             }
+
+            this.resetRecipe();
+            this.ui.WriteFinished.WaitOne();
+
+            w.Run<Messenger>(m =>
+                UiHelpers.Write(m.Subscriber, () =>
+                    m.Inform(
+                        updated
+                            ? "Recipe updated!"
+                            : "Recipe added!")));
+
+            var rui = w.Run<Navigator, RecipesUi>(
+                n => n.GetUi<RecipesPresenter, RecipesUi>());
+            w.Run<EventRaiser>(er =>
+            {
+                er.Raise(rui, "SearchTextChanged");
+            });
         }
 
         private void ui_ResetKeyTapped()
@@ -73,8 +95,30 @@
 
             if (response == Response.Yes)
             {
-                UiHelpers.Write(this.ui, () => this.ui.RecipeToAddUpdate = new Recipe());
+                this.resetRecipe();
             }
+        }
+
+        private void ui_LookupKeyTapped()
+        {
+            var w = this.web;
+
+            var recipeName = UiHelpers.Read(this.ui, () => this.ui.RecipeToAddUpdate.Name);
+            var recipe = w.Run<RecipeLoader, Recipe>(loader =>
+                loader.All().FirstOrDefault(r => string.Equals(
+                    r.Name, 
+                    recipeName, 
+                    StringComparison.CurrentCultureIgnoreCase)));
+
+            if (recipe != null)
+            {
+                UiHelpers.Write(this.ui, () => this.ui.RecipeToAddUpdate = recipe);
+            }
+        }
+
+        private void resetRecipe()
+        {
+            UiHelpers.Write(this.ui, () => this.ui.RecipeToAddUpdate = new Recipe());
         }
 
         private int setupIf1;

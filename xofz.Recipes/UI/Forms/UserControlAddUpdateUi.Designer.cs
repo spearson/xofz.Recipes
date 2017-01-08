@@ -39,6 +39,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.resetKey = new System.Windows.Forms.Button();
             this.addUpdateKey = new System.Windows.Forms.Button();
+            this.lookupKey = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -149,9 +150,25 @@
             this.addUpdateKey.UseVisualStyleBackColor = true;
             this.addUpdateKey.Click += new System.EventHandler(this.addUpdateKey_Click);
             // 
+            // lookupKey
+            // 
+            this.lookupKey.AutoSize = true;
+            this.lookupKey.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.lookupKey.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.lookupKey.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.lookupKey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lookupKey.Location = new System.Drawing.Point(491, 55);
+            this.lookupKey.Name = "lookupKey";
+            this.lookupKey.Size = new System.Drawing.Size(80, 32);
+            this.lookupKey.TabIndex = 11;
+            this.lookupKey.Text = "Lookup";
+            this.lookupKey.UseVisualStyleBackColor = true;
+            this.lookupKey.Click += new System.EventHandler(this.lookupKey_Click);
+            // 
             // UserControlAddUpdateUi
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.lookupKey);
             this.Controls.Add(this.addUpdateKey);
             this.Controls.Add(this.resetKey);
             this.Controls.Add(this.directionsTextBox);
@@ -185,5 +202,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button resetKey;
         private System.Windows.Forms.Button addUpdateKey;
+        private System.Windows.Forms.Button lookupKey;
     }
 }

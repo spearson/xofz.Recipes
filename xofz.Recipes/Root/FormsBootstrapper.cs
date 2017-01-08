@@ -3,6 +3,8 @@
     using System.Threading;
     using System.Windows.Forms;
     using xofz.Framework.Materialization;
+    using xofz.Presentation;
+    using xofz.Recipes.Presentation;
     using xofz.Recipes.Root.Commands;
     using xofz.Recipes.UI.Forms;
     using xofz.Root;
@@ -60,6 +62,8 @@
                         r => new LinkedListMaterializedEnumerable<Recipe>(r)),
                     mf,
                     w));
+
+            w.Run<Navigator>(n => n.Present<RecipesPresenter>());
         }
 
         private void setMainForm(FormMainUi mainForm)

@@ -20,6 +20,8 @@
 
         public event Action ResetKeyTapped;
 
+        public event Action LookupKeyTapped;
+
         Recipe AddUpdateUi.RecipeToAddUpdate
         {
             get
@@ -52,7 +54,12 @@
             new Thread(() => this.AddUpdateKeyTapped?.Invoke()).Start();
         }
 
-        private readonly Func<IEnumerable<string>, 
+        private void lookupKey_Click(object sender, EventArgs e)
+        {
+            new Thread(() => this.LookupKeyTapped?.Invoke()).Start();
+        }
+
+        private readonly Func<IEnumerable<string>,
             MaterializedEnumerable<string>> materializeCollection;
     }
 }

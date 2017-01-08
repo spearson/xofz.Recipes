@@ -2,6 +2,6 @@
 {
     public interface RecipeSaver
     {
-        void Save(Recipe recipe);
+        bool Save(Recipe recipe); // returns true if the recipe was updated (overwritten)
     }
 }

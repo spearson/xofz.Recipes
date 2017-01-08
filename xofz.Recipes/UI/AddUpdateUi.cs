@@ -9,6 +9,8 @@
 
         event Action ResetKeyTapped;
 
+        event Action LookupKeyTapped;
+
         Recipe RecipeToAddUpdate { get; set; }
     }
 }

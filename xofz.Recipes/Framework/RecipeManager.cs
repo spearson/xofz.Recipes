@@ -11,7 +11,7 @@
             this.location = location;
         }
 
-        void RecipeSaver.Save(Recipe recipe)
+        bool RecipeSaver.Save(Recipe recipe)
         {
             if (!Directory.Exists(this.location))
             {
@@ -32,9 +32,14 @@
                 lines.Add(direction);
             }
 
+            var recipeLocation = Path.Combine(this.location, recipe.Name);
+            var updated = File.Exists(recipeLocation);
+
             File.WriteAllLines(
                 Path.Combine(this.location, recipe.Name),
                 lines);
+
+            return updated;
         }
 
         public IEnumerable<Recipe> All()
