@@ -31,6 +31,7 @@
 
             this.ui.SearchTextChanged += this.ui_SearchTextChanged;
             this.ui.ClearSearchKeyTapped += this.ui_ClearSearchKeyTapped;
+            this.ui.DeleteRequested += this.ui_DeleteRequested;
             this.web.Run<RecipeLoader>(loader =>
             {
                 var recipes = loader.All();
@@ -39,6 +40,25 @@
             });
 
             this.web.Run<Navigator>(n => n.RegisterPresenter(this));
+        }
+
+        private void ui_DeleteRequested(string recipeName)
+        {
+            var w = this.web;
+            var response = Response.No;
+            w.Run<Messenger>(m =>
+            {
+                UiHelpers.Write(
+                    m.Subscriber,
+                    () => response = m.Question("Really delete " + recipeName + "?"));
+                m.Subscriber.WriteFinished.WaitOne();
+            });
+
+            if (response == Response.Yes)
+            {
+                w.Run<RecipeSaver>(saver => saver.Delete(recipeName));
+                this.ui_SearchTextChanged();
+            }
         }
 
         private void ui_ClearSearchKeyTapped()

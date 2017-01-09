@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.TableLayoutPanel navPanel;
             this.closeKey = new System.Windows.Forms.Button();
-            this.removeKey = new System.Windows.Forms.Button();
             this.addKey = new System.Windows.Forms.Button();
             this.recipesKey = new System.Windows.Forms.Button();
             navPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -47,8 +46,7 @@
             navPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
             navPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
             navPanel.Controls.Add(this.closeKey, 5, 0);
-            navPanel.Controls.Add(this.removeKey, 3, 0);
-            navPanel.Controls.Add(this.addKey, 2, 0);
+            navPanel.Controls.Add(this.addKey, 1, 0);
             navPanel.Controls.Add(this.recipesKey, 0, 0);
             navPanel.Location = new System.Drawing.Point(0, 0);
             navPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -74,22 +72,6 @@
             this.closeKey.UseVisualStyleBackColor = true;
             this.closeKey.Click += new System.EventHandler(this.closeKey_Click);
             // 
-            // removeKey
-            // 
-            this.removeKey.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.removeKey.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
-            this.removeKey.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.removeKey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeKey.Location = new System.Drawing.Point(445, 3);
-            this.removeKey.Name = "removeKey";
-            this.removeKey.Size = new System.Drawing.Size(142, 44);
-            this.removeKey.TabIndex = 4;
-            this.removeKey.Text = "Remove";
-            this.removeKey.UseVisualStyleBackColor = true;
-            this.removeKey.Click += new System.EventHandler(this.removeKey_Click);
-            // 
             // addKey
             // 
             this.addKey.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -98,9 +80,9 @@
             this.addKey.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.addKey.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.addKey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addKey.Location = new System.Drawing.Point(297, 3);
+            this.addKey.Location = new System.Drawing.Point(150, 3);
             this.addKey.Name = "addKey";
-            this.addKey.Size = new System.Drawing.Size(142, 44);
+            this.addKey.Size = new System.Drawing.Size(141, 44);
             this.addKey.TabIndex = 3;
             this.addKey.Text = "Add or Update";
             this.addKey.UseVisualStyleBackColor = true;
@@ -139,6 +121,5 @@
         private System.Windows.Forms.Button addKey;
         private System.Windows.Forms.Button recipesKey;
         private System.Windows.Forms.Button closeKey;
-        private System.Windows.Forms.Button removeKey;
     }
 }

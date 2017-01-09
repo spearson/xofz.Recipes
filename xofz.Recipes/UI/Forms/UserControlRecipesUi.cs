@@ -23,6 +23,8 @@
 
         public event Action ClearSearchKeyTapped;
 
+        public event Action<string> DeleteRequested;
+
         string RecipesUi.NameSearchText
         {
             get { return this.nameSearchTextBox.Text; }
@@ -110,6 +112,18 @@
         private void directionsSearchTextBox_TextChanged(object sender, EventArgs e)
         {
             new Thread(() => this.SearchTextChanged?.Invoke()).Start();
+        }
+
+        private void recipesGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var rg = this.recipesGrid;
+            if (rg.Columns[e.ColumnIndex] is DataGridViewButtonColumn
+                && e.RowIndex >= 0)
+            {
+                var row = rg.Rows[e.RowIndex];
+                var recipeName = row.Cells[0].Value.ToString();
+                new Thread(() => this.DeleteRequested?.Invoke(recipeName)).Start();
+            }
         }
 
         private readonly Func<IEnumerable<string>, MaterializedEnumerable<string>> materializeStrings;

@@ -25,17 +25,11 @@
                 return;
             }
 
-            this.ui.HomeKeyTapped += this.ui_HomeKeyTapped;
             this.ui.RecipesKeyTapped += this.ui_RecipesKeyTapped;
             this.ui.AddKeyTapped += this.ui_AddKeyTapped;
-            this.ui.RemoveKeyTapped += this.ui_RemoveKeyTapped;
             this.ui.CloseKeyTapped += this.ui_CloseKeyTapped;
 
             this.web.Run<Navigator>(n => n.RegisterPresenter(this));
-        }
-
-        private void ui_HomeKeyTapped()
-        {
         }
 
         private void ui_RecipesKeyTapped()
@@ -46,10 +40,6 @@
         private void ui_AddKeyTapped()
         {
             this.web.Run<Navigator>(n => n.Present<AddUpdatePresenter>());
-        }
-
-        private void ui_RemoveKeyTapped()
-        {
         }
 
         private void ui_CloseKeyTapped()

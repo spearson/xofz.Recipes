@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
+    using System.Windows.Forms;
     using xofz.UI.Forms;
 
     public partial class UserControlAddUpdateUi : UserControlUi, AddUpdateUi
@@ -57,6 +58,14 @@
         private void lookupKey_Click(object sender, EventArgs e)
         {
             new Thread(() => this.LookupKeyTapped?.Invoke()).Start();
+        }
+
+        private void nameTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                new Thread(() => this.LookupKeyTapped?.Invoke()).Start();
+            }
         }
 
         private readonly Func<IEnumerable<string>,

@@ -42,7 +42,16 @@
             return updated;
         }
 
-        public IEnumerable<Recipe> All()
+        void RecipeSaver.Delete(string recipeName)
+        {
+            var filePath = Path.Combine(this.location, recipeName);
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+        }
+
+        IEnumerable<Recipe> RecipeLoader.All()
         {
             foreach (var filePath in Directory.GetFiles(this.location))
             {

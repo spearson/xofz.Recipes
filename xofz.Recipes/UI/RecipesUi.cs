@@ -9,6 +9,8 @@
 
         event Action ClearSearchKeyTapped;
 
+        event Action<string> DeleteRequested;
+
         string NameSearchText { get; set; }
 
         string DescriptionSearchText { get; set; }

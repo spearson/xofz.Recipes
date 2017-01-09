@@ -45,6 +45,7 @@
             this.descriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IngredientsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.directionsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recipesGrid)).BeginInit();
             this.SuspendLayout();
@@ -180,10 +181,11 @@
             this.nameColumn,
             this.descriptionColumn,
             this.IngredientsColumn,
-            this.directionsColumn});
+            this.directionsColumn,
+            this.deleteColumn});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -197,6 +199,7 @@
             this.recipesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.recipesGrid.Size = new System.Drawing.Size(589, 511);
             this.recipesGrid.TabIndex = 4;
+            this.recipesGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.recipesGrid_CellClick);
             // 
             // nameColumn
             // 
@@ -225,6 +228,12 @@
             this.directionsColumn.Name = "directionsColumn";
             this.directionsColumn.ReadOnly = true;
             this.directionsColumn.Width = 400;
+            // 
+            // deleteColumn
+            // 
+            this.deleteColumn.HeaderText = "Delete";
+            this.deleteColumn.Name = "deleteColumn";
+            this.deleteColumn.ReadOnly = true;
             // 
             // UserControlRecipesUi
             // 
@@ -261,5 +270,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn IngredientsColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn directionsColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn deleteColumn;
     }
 }
