@@ -60,6 +60,11 @@
 
         IEnumerable<Recipe> RecipeLoader.All()
         {
+            if (!Directory.Exists(this.location))
+            {
+                Directory.CreateDirectory(this.location);
+            }
+
             foreach (var filePath in Directory.GetFiles(this.location))
             {
                 var name = Path.GetFileName(filePath);
