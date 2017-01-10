@@ -43,8 +43,7 @@
             this.recipesGrid = new System.Windows.Forms.DataGridView();
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IngredientsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.directionsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.openColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recipesGrid)).BeginInit();
@@ -180,8 +179,7 @@
             this.recipesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameColumn,
             this.descriptionColumn,
-            this.IngredientsColumn,
-            this.directionsColumn,
+            this.openColumn,
             this.deleteColumn});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -206,7 +204,7 @@
             this.nameColumn.HeaderText = "Name";
             this.nameColumn.Name = "nameColumn";
             this.nameColumn.ReadOnly = true;
-            this.nameColumn.Width = 250;
+            this.nameColumn.Width = 175;
             // 
             // descriptionColumn
             // 
@@ -215,19 +213,13 @@
             this.descriptionColumn.ReadOnly = true;
             this.descriptionColumn.Width = 300;
             // 
-            // IngredientsColumn
+            // openColumn
             // 
-            this.IngredientsColumn.HeaderText = "Ingredients";
-            this.IngredientsColumn.Name = "IngredientsColumn";
-            this.IngredientsColumn.ReadOnly = true;
-            this.IngredientsColumn.Width = 300;
-            // 
-            // directionsColumn
-            // 
-            this.directionsColumn.HeaderText = "Directions";
-            this.directionsColumn.Name = "directionsColumn";
-            this.directionsColumn.ReadOnly = true;
-            this.directionsColumn.Width = 400;
+            this.openColumn.HeaderText = "Open";
+            this.openColumn.Name = "openColumn";
+            this.openColumn.ReadOnly = true;
+            this.openColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.openColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // deleteColumn
             // 
@@ -268,8 +260,7 @@
         private System.Windows.Forms.DataGridView recipesGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IngredientsColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn directionsColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn openColumn;
         private System.Windows.Forms.DataGridViewButtonColumn deleteColumn;
     }
 }

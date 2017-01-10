@@ -31,6 +31,7 @@
 
             this.ui.SearchTextChanged += this.ui_SearchTextChanged;
             this.ui.ClearSearchKeyTapped += this.ui_ClearSearchKeyTapped;
+            this.ui.OpenRequested += this.ui_OpenRequested;
             this.ui.DeleteRequested += this.ui_DeleteRequested;
             this.web.Run<RecipeLoader>(loader =>
             {
@@ -40,6 +41,20 @@
             });
 
             this.web.Run<Navigator>(n => n.RegisterPresenter(this));
+        }
+
+        private void ui_OpenRequested(string recipeName)
+        {
+            var w = this.web;
+            var addUi = w.Run<Navigator, AddUpdateUi>(
+                n => n.GetUi<AddUpdatePresenter, AddUpdateUi>());
+            UiHelpers.Write(
+                addUi,
+                () => addUi.RecipeToAddUpdate
+                    = new Recipe { Name = recipeName });
+            w.Run<EventRaiser>(er => er.Raise(addUi, "LookupKeyTapped"));
+
+            w.Run<Navigator>(n => n.Present<AddUpdatePresenter>());
         }
 
         private void ui_DeleteRequested(string recipeName)
@@ -102,8 +117,8 @@
             if (filledIngredients.Any())
             {
                 matches = matches.Where(
-                    recipe => recipe.Ingredients
-                        .All(i => filledIngredients.Any(fi => i.ToLower()
+                    recipe => filledIngredients
+                        .All(fi => recipe.Ingredients.Any(i => i.ToLower()
                             .Contains(fi.ToLower()))));
             }
 
@@ -111,8 +126,8 @@
             if (filledDirections.Any())
             {
                 matches = matches.Where(
-                    recipe => recipe.Directions
-                        .All(d => filledDirections.Any(fd => d.ToLower()
+                    recipe => filledDirections
+                        .All(fd => recipe.Directions.Any(d => d.ToLower()
                             .Contains(fd.ToLower()))));
             }
 

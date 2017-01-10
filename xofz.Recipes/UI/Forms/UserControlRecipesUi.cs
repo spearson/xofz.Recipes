@@ -23,8 +23,10 @@
 
         public event Action ClearSearchKeyTapped;
 
-        public event Action<string> DeleteRequested;
+        public event Action<string> OpenRequested;
 
+        public event Action<string> DeleteRequested;
+        
         string RecipesUi.NameSearchText
         {
             get { return this.nameSearchTextBox.Text; }
@@ -82,9 +84,7 @@
                 {
                     this.recipesGrid.Rows.Add(
                         recipe.Name,
-                        recipe.Description,
-                        string.Join(Environment.NewLine, recipe.Ingredients),
-                        string.Join(Environment.NewLine, recipe.Directions));
+                        recipe.Description);
                 }
             }
         }
@@ -121,8 +121,22 @@
                 && e.RowIndex >= 0)
             {
                 var row = rg.Rows[e.RowIndex];
-                var recipeName = row.Cells[0].Value.ToString();
-                new Thread(() => this.DeleteRequested?.Invoke(recipeName)).Start();
+                var recipeName = row.Cells[0].Value?.ToString();
+                if (string.IsNullOrWhiteSpace(recipeName))
+                {
+                    return;
+                }
+
+                var buttonType = rg.Columns[e.ColumnIndex].HeaderText;
+                if (buttonType == "Open")
+                {
+                    new Thread(() => this.OpenRequested?.Invoke(recipeName)).Start();
+                }
+                else
+                {
+                    new Thread(() => this.DeleteRequested?.Invoke(recipeName)).Start();
+                }
+                
             }
         }
 

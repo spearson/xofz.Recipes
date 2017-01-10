@@ -1,0 +1,46 @@
+<Project DefaultTargets="ChangeVersion;Build;Deploy" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+
+  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+
+
+  <PropertyGroup>
+    <Version>$(BUILD_NUMBER)</Version>
+    <ProjectName>xofz.Recipes</ProjectName>
+    <BuildDir>$(ProjectName)\bin\Release</BuildDir>
+    <DeployFolder>C:\Dropbox\xofz.Apps\Recipes\xofz.Recipes-$(Version)</DeployFolder>
+  </PropertyGroup>
+
+
+  <Target Name="ChangeVersion">
+    <AssemblyInfo
+      CodeLanguage="CS" 
+      OutputFile="$(ProjectName)\Properties\AssemblyInfo.cs"
+      AssemblyTitle="$(ProjectName)" 
+      AssemblyDescription="This app lets you add, update, and delete recipes.  Use it as your own personal cookbook!"
+      AssemblyConfiguration=""
+      AssemblyCompany="X of Z"
+      AssemblyProduct="X of Z Recipes"
+      AssemblyCopyright="Copyright (c) Sam Pearson"
+      AssemblyTrademark=""
+      ComVisible="false"
+      Guid="2d54ac5c-c76a-4892-8756-a746445024cd"
+      AssemblyVersion="$(Version)"
+      AssemblyFileVersion="$(Version)" />
+  </Target>
+
+
+  <Target Name="Build" DependsOnTargets="ChangeVersion">
+    <RemoveDir Directories="$(BuildDir)" />
+    <MSBuild Projects="$(ProjectName).sln" Targets="Build" Properties="Configuration=Release;Platform=Any CPU" />
+  </Target>
+
+  <Target Name="Deploy" DependsOnTargets="Build">
+    <MakeDir Directories="$(DeployFolder)" Condition="!Exists('$(DeployFolder)')"/>
+    <ItemGroup>
+      <FilesToMove Include="$(BuildDir)\$(ProjectName).exe" />
+      <FilesToMove Include="$(BuildDir)\$(ProjectName).exe.config" />
+    </ItemGroup>
+    <MV SourceFiles="@(FilesToMove)" DestinationFolder="$(DeployFolder)" />
+  </Target>
+</Project>

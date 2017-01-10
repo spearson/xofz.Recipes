@@ -19,17 +19,24 @@
             }
 
             var lines = new List<string>();
-            lines.Add(recipe.Description);
-            lines.Add(string.Empty);
-            foreach (var ingredient in recipe.Ingredients)
+            lines.Add("[Description]");
+            if (recipe.Description != null)
             {
-                lines.Add(ingredient);
+                lines.Add(recipe.Description);
             }
             lines.Add(string.Empty);
 
-            foreach (var direction in recipe.Directions)
+            lines.Add("[Ingredients]");
+            if (recipe.Ingredients != null)
             {
-                lines.Add(direction);
+                lines.AddRange(recipe.Ingredients);
+            }
+            lines.Add(string.Empty);
+
+            lines.Add("[Directions]");
+            if (recipe.Directions != null)
+            {
+                lines.AddRange(recipe.Directions);
             }
 
             var recipeLocation = Path.Combine(this.location, recipe.Name);
@@ -57,47 +64,40 @@
             {
                 var name = Path.GetFileName(filePath);
                 var lines = File.ReadAllLines(filePath);
-                if (lines.Length < 1)
-                {
-                    continue;
-                }
-
-                var description = lines[0];
-                if (lines.Length < 3)
+                if (lines.Length <= 5)
                 {
                     yield return new Recipe
                     {
-                        Name = name,
-                        Description = description
+                        Name = name
                     };
                 }
 
-                var ingredients = new LinkedList<string>();
-                var endOfIngredients = lines.Length;
+                var description = lines[1];
+                var indexOfIngredients = lines.Length;
                 for (var i = 2; i < lines.Length; ++i)
                 {
-                    if (lines[i] == string.Empty)
+                    if (lines[i] == "[Ingredients]")
                     {
-                        endOfIngredients = i;
+                        indexOfIngredients = i + 1;
+                        break;
+                    }
+                }
+
+                var indexOfDirections = lines.Length;
+                var ingredients = new LinkedList<string>();
+                for (var i = indexOfIngredients; i < lines.Length - 1; ++i)
+                {
+                    if (lines[i] == string.Empty && lines[i + 1] == "[Directions]")
+                    {
+                        indexOfDirections = i + 2;
                         break;
                     }
 
                     ingredients.AddLast(lines[i]);
                 }
 
-                if (endOfIngredients == lines.Length)
-                {
-                    yield return new Recipe
-                    {
-                        Name = name,
-                        Description = description,
-                        Ingredients =
-                            new LinkedListMaterializedEnumerable<string>(ingredients)
-                    };
-                }
-
                 var directions = new LinkedList<string>();
-                for (var i = endOfIngredients + 1; i < lines.Length; ++i)
+                for (var i = indexOfDirections; i < lines.Length; ++i)
                 {
                     directions.AddLast(lines[i]);
                 }

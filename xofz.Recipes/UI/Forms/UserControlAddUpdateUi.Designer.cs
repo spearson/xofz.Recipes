@@ -54,9 +54,10 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(133, 58);
+            this.nameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameTextBox.Location = new System.Drawing.Point(133, 61);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(352, 26);
+            this.nameTextBox.Size = new System.Drawing.Size(352, 22);
             this.nameTextBox.TabIndex = 1;
             this.nameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nameTextBox_KeyPress);
             // 
@@ -80,18 +81,20 @@
             // 
             // descriptionTextBox
             // 
-            this.descriptionTextBox.Location = new System.Drawing.Point(133, 90);
+            this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionTextBox.Location = new System.Drawing.Point(133, 93);
             this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(600, 26);
+            this.descriptionTextBox.Size = new System.Drawing.Size(604, 22);
             this.descriptionTextBox.TabIndex = 4;
             // 
             // ingredientsTextBox
             // 
-            this.ingredientsTextBox.Location = new System.Drawing.Point(133, 122);
+            this.ingredientsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ingredientsTextBox.Location = new System.Drawing.Point(133, 121);
             this.ingredientsTextBox.Multiline = true;
             this.ingredientsTextBox.Name = "ingredientsTextBox";
             this.ingredientsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.ingredientsTextBox.Size = new System.Drawing.Size(427, 179);
+            this.ingredientsTextBox.Size = new System.Drawing.Size(604, 179);
             this.ingredientsTextBox.TabIndex = 6;
             // 
             // label4
@@ -105,11 +108,12 @@
             // 
             // directionsTextBox
             // 
-            this.directionsTextBox.Location = new System.Drawing.Point(133, 307);
+            this.directionsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.directionsTextBox.Location = new System.Drawing.Point(133, 306);
             this.directionsTextBox.Multiline = true;
             this.directionsTextBox.Name = "directionsTextBox";
             this.directionsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.directionsTextBox.Size = new System.Drawing.Size(427, 201);
+            this.directionsTextBox.Size = new System.Drawing.Size(604, 205);
             this.directionsTextBox.TabIndex = 8;
             // 
             // label5
@@ -128,7 +132,7 @@
             this.resetKey.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.resetKey.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.resetKey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.resetKey.Location = new System.Drawing.Point(566, 476);
+            this.resetKey.Location = new System.Drawing.Point(743, 306);
             this.resetKey.Name = "resetKey";
             this.resetKey.Size = new System.Drawing.Size(69, 32);
             this.resetKey.TabIndex = 9;
@@ -143,7 +147,7 @@
             this.addUpdateKey.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.addUpdateKey.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.addUpdateKey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addUpdateKey.Location = new System.Drawing.Point(743, 476);
+            this.addUpdateKey.Location = new System.Drawing.Point(743, 479);
             this.addUpdateKey.Name = "addUpdateKey";
             this.addUpdateKey.Size = new System.Drawing.Size(138, 32);
             this.addUpdateKey.TabIndex = 10;
