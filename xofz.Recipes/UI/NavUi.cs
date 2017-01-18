@@ -9,6 +9,8 @@
 
         event Action AddKeyTapped;
 
+        event Action LogKeyTapped;
+
         event Action CloseKeyTapped;
     }
 }

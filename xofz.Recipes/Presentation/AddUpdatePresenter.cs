@@ -73,6 +73,15 @@
                             ? "Recipe updated!"
                             : "Recipe added!")));
 
+            w.Run<LogEditor>(le => le.AddEntry(
+                "Information",
+                new[]
+                {
+                    updated
+                        ? "A recipe was updated: " + recipe.Name
+                        : "A new recipe was added: " + recipe.Name
+                }));
+
             var rui = w.Run<Navigator, RecipesUi>(
                 n => n.GetUi<RecipesPresenter, RecipesUi>());
             w.Run<EventRaiser>(er =>

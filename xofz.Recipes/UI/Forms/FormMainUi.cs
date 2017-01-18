@@ -21,6 +21,10 @@
         {
             var control = newUi as Control;
             control.SafeReplace(this.screenPanel);
+            if (control is UserControlLogUi)
+            {
+                control.Dock = DockStyle.Fill;
+            }
         }
 
         private void this_FormClosing(object sender, FormClosingEventArgs e)

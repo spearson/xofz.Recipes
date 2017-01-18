@@ -32,6 +32,7 @@
             this.closeKey = new System.Windows.Forms.Button();
             this.addKey = new System.Windows.Forms.Button();
             this.recipesKey = new System.Windows.Forms.Button();
+            this.logKey = new System.Windows.Forms.Button();
             navPanel = new System.Windows.Forms.TableLayoutPanel();
             navPanel.SuspendLayout();
             this.SuspendLayout();
@@ -45,6 +46,7 @@
             navPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
             navPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
             navPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 147F));
+            navPanel.Controls.Add(this.logKey, 4, 0);
             navPanel.Controls.Add(this.closeKey, 5, 0);
             navPanel.Controls.Add(this.addKey, 1, 0);
             navPanel.Controls.Add(this.recipesKey, 0, 0);
@@ -104,6 +106,22 @@
             this.recipesKey.UseVisualStyleBackColor = true;
             this.recipesKey.Click += new System.EventHandler(this.recipesKey_Click);
             // 
+            // logKey
+            // 
+            this.logKey.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.logKey.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.logKey.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.logKey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logKey.Location = new System.Drawing.Point(593, 3);
+            this.logKey.Name = "logKey";
+            this.logKey.Size = new System.Drawing.Size(141, 44);
+            this.logKey.TabIndex = 6;
+            this.logKey.Text = "Log";
+            this.logKey.UseVisualStyleBackColor = true;
+            this.logKey.Click += new System.EventHandler(this.logKey_Click);
+            // 
             // UserControlNavUi
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -121,5 +139,6 @@
         private System.Windows.Forms.Button addKey;
         private System.Windows.Forms.Button recipesKey;
         private System.Windows.Forms.Button closeKey;
+        private System.Windows.Forms.Button logKey;
     }
 }

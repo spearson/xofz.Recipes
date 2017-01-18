@@ -65,13 +65,20 @@
             {
                 UiHelpers.Write(
                     m.Subscriber,
-                    () => response = m.Question("Really delete " + recipeName + "?"));
+                    () => response = m.Question(
+                        "Really delete " + recipeName + "?"));
                 m.Subscriber.WriteFinished.WaitOne();
             });
 
             if (response == Response.Yes)
             {
                 w.Run<RecipeSaver>(saver => saver.Delete(recipeName));
+                w.Run<LogEditor>(le => le.AddEntry(
+                    "Information",
+                    new[]
+                    {
+                        "A recipe was deleted: " + recipeName
+                    }));
                 this.ui_SearchTextChanged();
             }
         }

@@ -36,7 +36,7 @@
             var mf = this.mainForm;
             var e = this.executor;
             var fm = new FormsMessenger { Subscriber = mf };
-            
+
             e.Execute(new SetupMethodWebCommand(
                 fm));
             var w = e.Get<SetupMethodWebCommand>().Web;
@@ -46,7 +46,8 @@
                     mf,
                     w))
                 .Execute(new SetupShutdownCommand(
-                    mf, w))
+                    mf,
+                    w))
                 .Execute(new SetupNavCommand(
                     mf.NavUi,
                     mf,
@@ -61,6 +62,11 @@
                         s => new LinkedListMaterializedEnumerable<string>(s),
                         r => new LinkedListMaterializedEnumerable<Recipe>(r)),
                     mf,
+                    w))
+                .Execute(new SetupLogCommand(
+                    new UserControlLogUi(),
+                    mf,
+                    new FormLogEditorUi(mf),
                     w));
 
             w.Run<Navigator>(n => n.Present<RecipesPresenter>());

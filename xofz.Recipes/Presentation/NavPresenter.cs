@@ -27,6 +27,7 @@
 
             this.ui.RecipesKeyTapped += this.ui_RecipesKeyTapped;
             this.ui.AddKeyTapped += this.ui_AddKeyTapped;
+            this.ui.LogKeyTapped += this.ui_LogKeyTapped;
             this.ui.CloseKeyTapped += this.ui_CloseKeyTapped;
 
             this.web.Run<Navigator>(n => n.RegisterPresenter(this));
@@ -40,6 +41,11 @@
         private void ui_AddKeyTapped()
         {
             this.web.Run<Navigator>(n => n.Present<AddUpdatePresenter>());
+        }
+
+        private void ui_LogKeyTapped()
+        {
+            this.web.Run<Navigator>(n => n.Present<LogPresenter>());
         }
 
         private void ui_CloseKeyTapped()
