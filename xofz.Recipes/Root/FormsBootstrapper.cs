@@ -64,7 +64,8 @@
                     mf,
                     w))
                 .Execute(new SetupLogCommand(
-                    new UserControlLogUi(),
+                    new UserControlLogUi(
+                        new LinkedListMaterializer()),
                     mf,
                     new FormLogEditorUi(mf),
                     w));
