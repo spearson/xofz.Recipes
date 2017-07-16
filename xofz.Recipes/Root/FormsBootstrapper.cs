@@ -67,7 +67,9 @@
                     new UserControlLogUi(
                         new LinkedListMaterializer()),
                     mf,
-                    new FormLogEditorUi(mf),
+                    new FormLogEditorUi(
+                        mf,
+                        new LinkedListMaterializer()),
                     w));
 
             w.Run<Navigator>(n => n.Present<RecipesPresenter>());

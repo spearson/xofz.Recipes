@@ -28,7 +28,7 @@
         private void registerDependencies()
         {
             var w = this.web;
-            w.RegisterDependency(new Navigator());
+            w.RegisterDependency(new Navigator(w));
             w.RegisterDependency(new EventRaiser());
             w.RegisterDependency(this.messenger);
         }
